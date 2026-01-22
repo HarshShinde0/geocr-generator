@@ -1,0 +1,15 @@
+dataset:
+  version: "2.0"
+  license: "CC-BY-4.0"
+  conformsTo:
+    - "http://mlcommons.org/croissant/1.1"
+    - "http://mlcommons.org/croissant/geo/1.0"
+
+extraction:
+  compute_statistics: false
+  extract_spectral_metadata: true
+  detect_sensor: true
+
+output:
+  save_metadata_cache: true
+  indent: 2
