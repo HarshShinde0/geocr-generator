@@ -2,6 +2,8 @@
 
 ## Overview
 
+<img src="assets/geocr.jpg" alt="GeoCroissant Generator Logo" align="right" width="150"/>
+
 [Croissant](https://github.com/mlcommons/croissant) is a JSON-LD-based metadata standard for describing machine learning datasets, developed by MLCommons. Croissant provides a rich, structured format that helps users discover, understand, and use ML datasets by providing a consistent structure for metadata representation and querying.
 
 The GeoCroissant Generator can be used as a cross-platform command line interface (CLI) program or a Python library that combines automatically extracted geospatial information from raw assets and other user-provided metadata to build a Croissant-compliant metadata record with geospatial extensions. Generated GeoCroissant records can be saved locally for dataset documentation and discovery.
