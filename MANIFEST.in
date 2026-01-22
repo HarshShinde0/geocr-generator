@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+include requirements.txt
+recursive-include docs *.md *.yaml *.ttl
+recursive-include assets *.jpg *.png
