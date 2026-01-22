@@ -11,8 +11,8 @@ A tool for generating GeoCroissant metadata from geospatial datasets.
 __version__ = "1.0.0"
 __author__ = "Harsh S."
 
-from geocr_generator.core.generator import GeoCroissantGenerator
-from geocr_generator.core.metadata_extractor import MetadataExtractor
+from core.generator import GeoCroissantGenerator
+from core.metadata_extractor import MetadataExtractor
 
 __all__ = [
     "GeoCroissantGenerator",

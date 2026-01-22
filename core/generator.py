@@ -7,9 +7,9 @@ from typing import Dict, List, Optional, Any
 from datetime import datetime
 import json
 
-from geocr_generator.core.metadata_extractor import MetadataExtractor
-from geocr_generator.core.config import Config
-from geocr_generator.utils import (
+from core.metadata_extractor import MetadataExtractor
+from core.config import Config
+from utils import (
     scan_directory_for_geotiffs,
     extract_temporal_from_filename,
     detect_sampling_strategy,

@@ -7,8 +7,8 @@ import sys
 import argparse
 from pathlib import Path
 
-from geocr_generator import GeoCroissantGenerator
-from geocr_generator.core.config import Config
+from core.generator import GeoCroissantGenerator
+from core.config import Config
 
 
 def main():

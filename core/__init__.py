@@ -1,8 +1,8 @@
 """Core package initialization."""
 
-from geocr_generator.core.generator import GeoCroissantGenerator
-from geocr_generator.core.metadata_extractor import MetadataExtractor
-from geocr_generator.core.config import Config
+from core.generator import GeoCroissantGenerator
+from core.metadata_extractor import MetadataExtractor
+from core.config import Config
 
 __all__ = [
     "GeoCroissantGenerator",

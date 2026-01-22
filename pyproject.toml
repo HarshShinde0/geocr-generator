@@ -14,7 +14,9 @@ dependencies = [
 ]
 
 [project.scripts]
-geocr-generate = "geocr_generator.scripts.geocr_generate:main"
+geocr-generate = "scripts.geocr_generate:main"
 
 [tool.setuptools]
-packages = ["geocr_generator", "geocr_generator.core", "geocr_generator.scripts"]
+packages = ["core", "scripts"]
+package-dir = {"" = "."}
+py-modules = ["utils"]

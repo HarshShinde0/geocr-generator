@@ -46,7 +46,7 @@ geocr-generate ./hls_burn_scars --config config.yaml
 ### Python Library
 
 ```python
-from geocr_generator.core import generator
+from core import generator
 
 # Generate GeoCroissant metadata
 metadata = generator.generate(config_path="path/to/config.yaml")
