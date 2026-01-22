@@ -52,8 +52,8 @@
   "@type": "sc:Dataset",
   "name": "hls_burn_scars",
   "description": "Geospatial dataset extracted from hls_burn_scars directory",
-  "url": "file://../../hls_burn_scars",
-  "citeAs": "@dataset{hls_burn_scars, title={hls_burn_scars geospatial dataset}, year={2026}, url={file://../../hls_burn_scars}}",
+  "url": "file://../hls_burn_scars",
+  "citeAs": "@dataset{hls_burn_scars, title={hls_burn_scars geospatial dataset}, year={2026}, url={file://../hls_burn_scars}}",
   "datePublished": "2026-01-22",
   "version": "1.0",
   "license": "Unknown",
@@ -67,7 +67,7 @@
       "@id": "data_repo",
       "name": "data_repo",
       "description": "Directory containing the dataset files",
-      "contentUrl": "../../hls_burn_scars",
+      "contentUrl": "../hls_burn_scars",
       "encodingFormat": "local_directory",
       "md5": "placeholder_hash_for_directory"
     },
@@ -149,6 +149,11 @@
     }
   ],
   "temporalCoverage": "2018-07-09/2021-06-15",
+  "geocr:temporalResolution": {
+    "@type": "QuantitativeValue",
+    "value": 8,
+    "unitText": "weeks"
+  },
   "keywords": [
     "hls_burn_scars",
     "HLS_S30",

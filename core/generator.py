@@ -14,7 +14,8 @@ from utils import (
     extract_temporal_from_filename,
     detect_sampling_strategy,
     detect_sensor_from_filename,
-    get_spectral_band_info
+    get_spectral_band_info,
+    calculate_temporal_resolution
 )
 
 
@@ -67,6 +68,7 @@ class GeoCroissantGenerator:
         # Build GeoCroissant metadata
         geocroissant = self._build_base_metadata(root_dir)
         self._add_temporal_coverage(geocroissant, all_files)
+        self._add_temporal_resolution(geocroissant, all_files)
         self._add_keywords(geocroissant, root_dir.name, sensor)
         self._add_creator(geocroissant, sample_meta)
         self._add_geospatial_properties(geocroissant, sample_meta)
@@ -196,6 +198,12 @@ class GeoCroissantGenerator:
                 geocroissant["temporalCoverage"] = temporal_dates[0]
             else:
                 geocroissant["temporalCoverage"] = f"{temporal_dates[0]}/{temporal_dates[-1]}"
+    
+    def _add_temporal_resolution(self, geocroissant: Dict, all_files: List[Path]) -> None:
+        """Add temporal resolution/cadence to metadata."""
+        temporal_resolution = calculate_temporal_resolution(all_files)
+        if temporal_resolution:
+            geocroissant["geocr:temporalResolution"] = temporal_resolution
     
     def _add_keywords(self, geocroissant: Dict, dataset_name: str, sensor: Optional[str]) -> None:
         """Add keywords to metadata."""

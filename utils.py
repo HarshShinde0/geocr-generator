@@ -3,9 +3,9 @@ Utility functions for GeoCroissant generator.
 All helper functions from the original geocr_generator.py.
 """
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple
 
 
 def extract_temporal_from_filename(filename: str) -> Optional[str]:
@@ -173,3 +173,89 @@ def scan_directory_for_geotiffs(directory: Path) -> Dict[str, Dict[str, List[Pat
         structure[split][file_type].append(tiff_path)
     
     return structure
+
+
+def calculate_temporal_resolution(all_files: List[Path]) -> Optional[Dict[str, Any]]:
+    """
+    Calculate temporal resolution/cadence from file timestamps.
+    
+    Args:
+        all_files: List of file paths with dates in filenames
+        
+    Returns:
+        Dictionary with temporal resolution info or None
+    """
+    # Extract dates from all files
+    dates = []
+    for file_path in all_files:
+        date_str = extract_temporal_from_filename(file_path.name)
+        if date_str:
+            try:
+                date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+                dates.append(date_obj)
+            except ValueError:
+                continue
+    
+    if len(dates) < 2:
+        return None
+    
+    # Sort dates
+    dates.sort()
+    
+    # Calculate time deltas between consecutive observations
+    deltas = []
+    for i in range(1, len(dates)):
+        delta = (dates[i] - dates[i-1]).days
+        if delta > 0:  # Ignore same-day observations
+            deltas.append(delta)
+    
+    if not deltas:
+        return None
+    
+    # Calculate median delta (more robust than mean)
+    deltas.sort()
+    median_delta = deltas[len(deltas) // 2]
+    
+    # Determine appropriate unit and value
+    if median_delta < 2:
+        return {
+            "@type": "QuantitativeValue",
+            "value": median_delta,
+            "unitText": "day"
+        }
+    elif median_delta < 14:
+        return {
+            "@type": "QuantitativeValue",
+            "value": median_delta,
+            "unitText": "days"
+        }
+    elif median_delta < 60:
+        # Convert to weeks if close to weekly cadence
+        weeks = round(median_delta / 7)
+        if weeks == 1:
+            return {
+                "@type": "QuantitativeValue",
+                "value": 1,
+                "unitText": "week"
+            }
+        else:
+            return {
+                "@type": "QuantitativeValue",
+                "value": weeks,
+                "unitText": "weeks"
+            }
+    else:
+        # Convert to months
+        months = round(median_delta / 30.44)
+        if months == 1:
+            return {
+                "@type": "QuantitativeValue",
+                "value": 1,
+                "unitText": "month"
+            }
+        else:
+            return {
+                "@type": "QuantitativeValue",
+                "value": months,
+                "unitText": "months"
+            }
