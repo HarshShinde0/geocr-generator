@@ -26,4 +26,4 @@ jobs:
     
     - name: Validate GeoCroissant JSON
       run: |
-        mlcroissant validate --jsonld=geocroissant.json
+        mlcroissant validate --jsonld=recipes/geocroissant.json
