@@ -31,10 +31,9 @@ dependencies = [
     "numpy",
     "mlcroissant",
 ]
-]
 
 [project.urls]
-Homepage = "https://github.com/HarshShinde0/geocr-generator"
+Homepage = "https://harshshinde0.github.io/geocr-generator"
 Repository = "https://github.com/HarshShinde0/geocr-generator"
 Issues = "https://github.com/HarshShinde0/geocr-generator/issues"
 
