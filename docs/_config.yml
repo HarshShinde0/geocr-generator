@@ -1,0 +1,4 @@
+theme: jekyll-theme-cayman
+title: GeoCroissant Generator
+description: Generate Croissant-compliant metadata with geospatial extensions
+show_downloads: true
