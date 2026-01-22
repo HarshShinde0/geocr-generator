@@ -32,6 +32,17 @@ pip install -e .
 geocr-generate --config path/to/config.yaml --output path/to/output.json
 ```
 
+```bash
+# Generate metadata for a directory
+geocr-generate ./hls_burn_scars
+
+# Specify output path
+geocr-generate ./hls_burn_scars --output geocroissant.json
+
+# Use custom configuration
+geocr-generate ./hls_burn_scars --config config.yaml
+```
+
 ### Python Library
 
 ```python
